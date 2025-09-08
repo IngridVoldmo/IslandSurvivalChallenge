@@ -1,0 +1,93 @@
+.styledimg{
+    border-radius: 100%;
+    width: 70%;
+    border: 4px solid black;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* Første kolonne tar 1 del, andre 2 deler */
+    gap: 10px;
+    text-align: center;
+}
+
+.item1{
+    display: flex;
+    background-color: #79967a;
+    border-radius: 5px;
+    padding: 20px;
+    flex-direction: row; 
+    align-items: center; 
+    gap: 30px;
+}
+.item1 > * {
+    flex: 0 1 auto;   /* Alle barn deler plassen likt */
+}
+
+.item2{
+    display: flex;
+    background-color: #a196b3;
+    border-radius: 5px;
+    flex-direction: column;
+    align-items: center;
+    gap: 10%;
+}
+
+.grid-container2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Første kolonne tar 1 del, andre 2 deler */
+    gap: 10px;
+    border-radius: 5px;
+    background-color: #8eceec;
+    margin-top: 10px;
+}
+
+.item3{
+    display: flex;
+    border-radius: 5px;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.action-list {
+    list-style: none;    /* Fjerner punkter */
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column; /* Legger knappene under hverandre */
+    gap: 10px;              /* Avstand mellom knappene */
+}
+
+.action-list li {
+    display: flex;          /* Så knappen tar opp plassen riktig */
+    justify-content: center;
+}
+
+.action-list button {
+    width: 150px;
+    border-radius: 25px;
+    border: solid;
+    background-color: #df7575;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.action-list button:hover {
+    background-color: #d69c9c;
+}
+
+.loot-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.loot-list li {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* avstand mellom emoji og tall */
+    font-size: 24px; /* gjør det stort og pent */
+}
+
