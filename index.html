@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="styles.css"> 
+    <link rel="stylesheet" href="styles.css">
+    <script src="index.js" defer></script>
 </head>
 <body style="background-color: black;">
     <section class="grid-container" >
@@ -16,10 +17,10 @@
             </section>
             <section>
                 <ul class="loot-list">
-                <li><span>🧱</span> <span>0</span></li>
-                <li><span>🥀</span> <span>0</span></li>
-                <li><span>🍖</span> <span>0</span></li>
-                <li><span>🏔️</span> <span>0</span></li>
+                <li><span>🧱</span> <span id="woodStatus">20</span></li>
+                <li><span>🥀</span> <span id="vineStatus">10</span></li>
+                <li><span>🍖</span> <span id="meatStatus">30</span></li>
+                <li><span>🏔️</span> <span id="stoneStatus">20</span></li>
             </ul>
             </section>
             <section>
@@ -30,15 +31,22 @@
         <section class="item2">
             <h1>Actions</h1>
             <ul class="action-list">
-                <li><button>Hunt</button><p>&emsp;🍖&emsp;&emsp;&emsp;</p></li>
-                <li><button>Gather</button><p>&emsp;🥀 🏔️ 🧱</p></li>
-                <li><button>Rest</button><p>&emsp;💪&emsp;&emsp;&emsp;</p></li>
-                <li><button>Sail away</button><p>&emsp;⛵&emsp;&emsp;&emsp;</p></li>
+                <li><button onclick="performAction('hunt')">Hunt</button><p>&emsp;🍖&emsp;&emsp;&emsp;</p></li>
+                <li><button onclick="performAction('gather')">Gather</button><p>&emsp;🥀 🏔️ 🧱</p></li>
+                <li><button onclick="performAction('rest')">Rest</button><p>&emsp;💪&emsp;&emsp;&emsp;</p></li>
+                <li><button onclick="performAction('sail away')">Sail away</button><p>&emsp;⛵&emsp;&emsp;&emsp;</p></li>
             </ul>
         </section>
     </section>
     <section class="grid-container2">
         <h1>hello</h1>
+        <img id="toolImage"><img/>
+        <section>
+            <label for="myDropdown">Choose an option:</label>
+            <select id="myDropdown" name="myDropdownName">
+            </select>
+        </section>
+        
     </section>
     
     
