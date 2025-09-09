@@ -4,42 +4,77 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="index.css"> 
+    <link rel="stylesheet" href="styles.css">
+    <script src="index.js" defer></script>
 </head>
 <body style="background-color: black;">
-    <div class="grid-container" >
-        <div class="item1">
-            <div>
-                <h2>Survivor</h2>
+    <section class="grid-container" >
+        <section class="item1">
+            <section class="survivor">
+                <h1>Survivor</h1>
                 <img class="styledimg" src="https://cdn.glitch.global/4ab89df4-051b-4f6c-b564-2317ed5cc084/Survivor.png?v=1729673697126"/>
-                <p>💪</p>
-            </div>
-            <div>
+                <p class="emoji">💪</p>
+                <div class="bar">
+                    <div class="fill" id="fill">70%</div>
+                </div>
+            </section>
+            <section>
                 <ul class="loot-list">
-                <li><span>🧱</span> <span>0</span></li>
-                <li><span>🥀</span> <span>0</span></li>
-                <li><span>🍖</span> <span>0</span></li>
-                <li><span>🏔️</span> <span>0</span></li>
-            </ul>
-            </div>
-            <div>
-                fewogj
-            </div>
+                    <li><span class="emoji">🧱</span> <span id="woodStatus">20</span></li>
+                    <li><span class="emoji">🥀</span> <span id="vineStatus">10</span></li>
+                    <li><span class="emoji">🍖</span> <span id="meatStatus">30</span></li>
+                    <li><span class="emoji">🏔️</span> <span id="stoneStatus">20</span></li>
+                </ul>
+            </section>
+            <section>
+                <h3>Crafted tools</h3>
+                <section class="craftedTools">
+                <img class="grid-item" src="https://cdn.glitch.global/4ab89df4-051b-4f6c-b564-2317ed5cc084/Axe.png"></img>
+                <img class="grid-item"></img>
+                <img class="grid-item"></img>
+                <img class="grid-item"></img>
+            </section>
+            </section>
             
-        </div>
-        <div class="item2">
+            
+        </section>
+        <section class="actions">
             <h1>Actions</h1>
             <ul class="action-list">
-                <li><button>Hunt</button><p>&emsp;🍖&emsp;&emsp;&emsp;</p></li>
-                <li><button>Gather</button><p>&emsp;🥀 🏔️ 🧱</p></li>
-                <li><button>Rest</button><p>&emsp;💪&emsp;&emsp;&emsp;</p></li>
-                <li><button>Sail away</button><p>&emsp;⛵&emsp;&emsp;&emsp;</p></li>
+                <li><button onclick="performAction('hunt')">Hunt</button><span class="emoji">🍖</span></li>
+                <li><button onclick="performAction('gather')">Gather</button><span class="emoji">🥀 🏔️ 🧱</span></p></li>
+                <li><button onclick="performAction('rest')">Rest</button><span class="emoji">💪</span></li>
+                <li><button onclick="performAction('sail away')">Sail away</button><span class="emoji">⛵</span></li>
             </ul>
-        </div>
-    </div>
-    <div class="grid-container2">
-        <h1>hello</h1>
-    </div>
+        </section>
+    </section>
+    <section class="grid-container2">
+        <section class="toolsection">
+            <section class="tooldescription">
+                <h2>Title</h2>
+                <p>Description</p>
+                <h3>Requirements</h3>
+                <ul>
+                    <li>ncjsdk</li>
+                    <li>something</li>
+                </ul>
+            </section>
+            <section class="toolImageSection">
+                <img id="toolImage" class="toolImage" src="https://cdn.glitch.global/4ab89df4-051b-4f6c-b564-2317ed5cc084/Axe.png"><img/>
+            </section>
+            
+        </section>
+        
+        <section class="chooseToolSection">
+            <section><label for="myDropdown">Choose an item to craft:</label>
+            <select id="myDropdown" name="myDropdownName" onchange="showTool()">
+                <option value="" disabled selected>Select an item to craft</option>
+            </select></section>
+            
+            <button onclick="performAction('sail away')">Craft</button>
+        </section>
+        
+    </section>
     
     
 </body>

@@ -1,0 +1,217 @@
+.styledimg{
+    border-radius: 100%;
+    width: 90%;
+    border: 4px solid black;
+}
+
+
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* Første kolonne tar 1 del, andre 2 deler */
+    gap: 10px;
+    text-align: center;
+}
+
+.item1{
+    display: flex;
+    background-color: #a4dd8f;
+    border-radius: 5px;
+    padding: 20px;
+    flex-direction: row; 
+    align-items: center; 
+    gap: 10%;
+}
+.item1 > * {
+    flex: 0 1 auto;   /* Alle barn deler plassen likt */
+}
+
+h1{
+    margin: 0;
+    font-size: xx-large;
+}
+h1{
+    margin: 20px;
+    font-size: xx-large;
+}
+
+p{
+    margin: 0;
+}
+
+.survivor {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    align-items: center;
+}
+
+.actions{
+    display: flex;
+    padding: 20px;
+    background-color: #efe5fe;
+    border-radius: 5px;
+    flex-direction: column;
+    align-items: center;
+    gap: 10%;
+}
+
+.grid-container2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Første kolonne tar 1 del, andre 2 deler */
+    border-radius: 5px;
+    background-color: #efe5fe;
+    margin-top: 10px;
+}
+
+.craftedTools {
+    display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 1px; 
+  align-items: center;
+  margin-right: 30px;
+    width: 250px; 
+    height: 250px;
+    text-align: center;
+}
+
+.grid-item{
+    display: flex;
+    width: 100px; 
+    height: 100px;
+    align-items: center;
+    border-radius: 10px;
+    border: 4px solid black;
+    background-color: rgb(176, 176, 176);
+}
+
+.toolsection{
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    margin: 5%;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 10px;
+    align-items: center;
+    height: auto;
+
+}
+
+.tooldescription{
+    display: flex;
+    flex-direction: column;
+    margin: 40px;
+    margin-left: 30%;
+    background-color: white;
+    font-size: larger;
+}
+
+.toolImageSection{
+    display: flex;
+    flex-direction: column;
+    margin: 40px;
+    align-items: center;
+}
+
+.toolImage {
+    width: 80%;
+    border-radius: 10px;
+    border: 2px solid black;
+}
+
+
+.action-list {
+    list-style: none;    /* Fjerner punkter */
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column; /* Legger knappene under hverandre */
+    gap: 10px;              /* Avstand mellom knappene */
+}
+
+.action-list li {
+    display: flex;          /* Så knappen tar opp plassen riktig */
+    justify-content: left;
+    padding-bottom: 20px;
+}
+
+.action-list button {
+    width: 150px;
+    height: 50px;
+    border-radius: 25px;
+    border: solid;
+    background-color: #df7575;
+    border: 2px solid black;
+    cursor: pointer;
+    font-size: 20px;
+    margin-right: 30px;
+}
+
+.action-list button:hover {
+    background-color: #d69c9c;
+}
+
+.loot-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.loot-list li {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* avstand mellom emoji og tall */
+    font-size: 24px; /* gjør det stort og pent */
+}
+
+.emoji{
+    font-size:2rem;
+    text-shadow:
+    1px 1px 0 black,
+   -1px -1px 0 black,
+    1px -1px 0 black,
+   -1px  1px 0 black;
+}
+
+
+.chooseToolSection{
+    display: flex;
+    height: max-content;
+    flex-direction: column;
+    align-items: left;
+    padding: 50px;
+    gap: 40px;
+}
+
+.chooseToolSection button {
+    width: 150px;
+    height: 50px;
+    border-radius: 25px;
+    border: solid;
+    background-color: green;
+    border: 2px solid black;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.chooseToolSection button:hover {
+    background-color: #d69c9c;
+}
+
+
+.bar {
+      width: 150px;
+      height: 20px;
+      background: #eae9e9;
+      border-radius: 15px;
+      overflow: hidden;
+      border: 3px solid #eae9e9;
+    }
+.fill {
+    height: 100%;
+    width: 70%;
+    background: green;
+    border-radius: 15px;
+    transition: width 0.3s;
+}
