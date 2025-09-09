@@ -2,8 +2,9 @@ let meat = 30;
 let vines = 10;
 let wood = 20;
 let stone = 20;
-const tools = getTools();
-setDropdownOptions();
+let tools = [];
+
+getTools();
 
 //this.alert("message")
 
@@ -11,8 +12,10 @@ setDropdownOptions();
 async function getTools() {
     //endre til dean sin ppt med catch og Promises, eller legg inn try catch
   const response = await fetch('https://island-survival-kit-builder.onrender.com/tools');
-  const tools = await response.json(); //extract JSON from the http response
-  return tools;
+  tools = await response.json(); //extract JSON from the http response
+ setDropdownOptions();
+ 
+  
 }
 
 function setDropdownOptions(){
@@ -40,3 +43,10 @@ function performAction(action){
     }
 }
 
+function showTool(){
+    const dropdown = document.getElementById("myDropdown");
+    const toolId = dropdown.value;
+    const image_url = tools[toolId-1]["img-url"];
+    document.getElementById("toolImage").src = image_url;
+    console.log("tool "+toolId + tools[toolId-1].title);
+}
