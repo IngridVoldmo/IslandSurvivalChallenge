@@ -31,18 +31,48 @@ function setDropdownOptions(){
 
 function performAction(action){
     if(action === "hunt"){
-
-        meat = meat+1;
-        document.getElementById("meatStatus").textContent = meat;
+        hunt();
         console.log("hunting");
     }
     else if(action==="gather"){
+        gather();
         console.log("gathering");
     }
     else{
         console.log("do nothing");
     }
 }
+
+function gather(){
+
+}
+
+function hunt(){
+    upDateEnergy(-20, "hunt")
+    meat = meat+ (Math.floor(Math.random() * 20) + 1);
+    document.getElementById("meatStatus").textContent = meat;
+    
+}
+
+function upDateEnergy(addPercent, actionButtonId){
+    let fill = document.getElementById("fill");
+    let currentWidth = parseInt(fill.style.width) || 70;
+    let newWidth = currentWidth + addPercent;
+    if ((newWidth+addPercent) < 0) {
+        document.getElementById(actionButtonId).disabled = true;
+    }
+    fill.style.width = newWidth + "%";
+
+    //disable if it cant be used next time
+    document.getElementById(actionButtonId).disabled = newWidth+addPercent < 0;
+
+    //activate if energy is high enough
+    document.getElementById("gather").disabled = newWidth < 10;
+    document.getElementById("hunt").disabled = newWidth < 20;
+}
+
+
+
 
 function showTool(){
     const dropdown = document.getElementById("myDropdown");
