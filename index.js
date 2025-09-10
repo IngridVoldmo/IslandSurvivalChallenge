@@ -44,7 +44,19 @@ function performAction(action){
 }
 
 function gather(){
+    upDateEnergy(-10,"gather")
+    //Payoff: 1-10 vines, 1-10 food, 1-10 wood and 1-5 stone
+    meat = meat+ (Math.floor(Math.random() * 10) + 1);
+    document.getElementById("meatStatus").textContent = meat;
 
+    vines = vines+ (Math.floor(Math.random() * 10) + 1);
+    document.getElementById("vineStatus").textContent = vines;
+
+    wood = wood+ (Math.floor(Math.random() * 10) + 1);
+    document.getElementById("woodStatus").textContent = wood;
+
+    stone = stone+ (Math.floor(Math.random() * 10) + 1);
+    document.getElementById("vineStatus").textContent = stone;
 }
 
 function hunt(){
