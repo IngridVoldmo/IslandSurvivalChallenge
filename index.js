@@ -47,7 +47,7 @@ function performAction(action){
 function rest(){
     if(meat>=10){
         const energyEffect = Math.floor(Math.random() * (20 - 1 + 1)) + 1;
-    upDateEnergy(energyEffect, "rest");
+    upDateEnergy(energyEffect);
     meat = meat - 10;
     document.getElementById("meatStatus").textContent = meat;
     }
@@ -68,30 +68,38 @@ function gather(){
 
     stone = stone+ (Math.floor(Math.random() * 10) + 1);
     document.getElementById("stoneStatus").textContent = stone;
-    upDateEnergy(-10,"gather");
+    upDateEnergy(-10);
 }
 
 function hunt(){
-    upDateEnergy(-20, "hunt")
+    upDateEnergy(-20)
     meat = meat+ (Math.floor((Math.random() * 20) + 1));
     document.getElementById("meatStatus").textContent = meat;
     
 }
 
-function upDateEnergy(addPercent, actionButtonId){
+function upDateEnergy(addPercent){
     let fill = document.getElementById("fill");
     let currentWidth = parseInt(fill.style.width) || 70;
     let newWidth = currentWidth + addPercent;
-    fill.style.width = newWidth + "%";
-    if ((newWidth+addPercent) < 0) {
-        document.getElementById(actionButtonId).disabled = true;
+    if(newWidth>=0){
+        fill.style.width = newWidth + "%";
+        fill.textContent = newWidth + "%";
+    }
+    
+
+    if ((newWidth+addPercent) <= 20) {
+        document.getElementById("hunt").disabled = true;
+    }
+    if ((newWidth+addPercent) <= 10) {
+        document.getElementById("gather").disabled = true;
     }
 
     //activate if energy is high enough
-    if(newWidth>=10 && currentWidth<10){
+    if(newWidth>=10){
         document.getElementById("gather").disabled = false;
     }
-    if(newWidth>=20 && currentWidth<20){
+    if(newWidth>=20){
         document.getElementById("hunt").disabled =false;
     }
 }
