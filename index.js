@@ -38,16 +38,27 @@ function performAction(action){
         gather();
         console.log("gathering");
     }
-    else{
-        console.log("do nothing");
+    else if(action === "rest"){
+        rest();
+        console.log("resting");
+    }
+}
+
+function rest(){
+    if(meat>=10){
+        const energyEffect = Math.floor(Math.random() * (20 - 1 + 1)) + 1;
+    upDateEnergy(energyEffect, "rest");
+    meat = meat - 10;
+    document.getElementById("meatStatus").textContent = meat;
     }
 }
 
 function gather(){
-    upDateEnergy(-10,"gather")
+    
     //Payoff: 1-10 vines, 1-10 food, 1-10 wood and 1-5 stone
-    meat = meat+ (Math.floor(Math.random() * 10) + 1);
+    meat = meat+ (Math.floor(Math.random() * (10 - 1 + 1)) + 1);
     document.getElementById("meatStatus").textContent = meat;
+    console.log(meat);
 
     vines = vines+ (Math.floor(Math.random() * 10) + 1);
     document.getElementById("vineStatus").textContent = vines;
@@ -56,12 +67,13 @@ function gather(){
     document.getElementById("woodStatus").textContent = wood;
 
     stone = stone+ (Math.floor(Math.random() * 10) + 1);
-    document.getElementById("vineStatus").textContent = stone;
+    document.getElementById("stoneStatus").textContent = stone;
+    upDateEnergy(-10,"gather");
 }
 
 function hunt(){
     upDateEnergy(-20, "hunt")
-    meat = meat+ (Math.floor(Math.random() * 20) + 1);
+    meat = meat+ (Math.floor((Math.random() * 20) + 1));
     document.getElementById("meatStatus").textContent = meat;
     
 }
@@ -70,17 +82,18 @@ function upDateEnergy(addPercent, actionButtonId){
     let fill = document.getElementById("fill");
     let currentWidth = parseInt(fill.style.width) || 70;
     let newWidth = currentWidth + addPercent;
+    fill.style.width = newWidth + "%";
     if ((newWidth+addPercent) < 0) {
         document.getElementById(actionButtonId).disabled = true;
     }
-    fill.style.width = newWidth + "%";
-
-    //disable if it cant be used next time
-    document.getElementById(actionButtonId).disabled = newWidth+addPercent < 0;
 
     //activate if energy is high enough
-    document.getElementById("gather").disabled = newWidth < 10;
-    document.getElementById("hunt").disabled = newWidth < 20;
+    if(newWidth>=10 && currentWidth<10){
+        document.getElementById("gather").disabled = false;
+    }
+    if(newWidth>=20 && currentWidth<20){
+        document.getElementById("hunt").disabled =false;
+    }
 }
 
 
