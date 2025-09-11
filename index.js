@@ -1,8 +1,14 @@
+
+
 let meat = 30;
 let vines = 10;
 let wood = 20;
 let stone = 20;
 let tools = [];
+let energy = 70;
+let boatStatus = false;
+let axeStatus = false;
+let spearStatus = false;
 
 getTools();
 
@@ -42,6 +48,9 @@ function performAction(action){
         rest();
         console.log("resting");
     }
+    else if(action === "sail away"){
+        sailAway();
+    }
 }
 
 function rest(){
@@ -78,13 +87,18 @@ function hunt(){
     
 }
 
+function sailAway(){
+    alert("YOU WIN!!!");
+}
+
 function upDateEnergy(addPercent){
     let fill = document.getElementById("fill");
-    let currentWidth = parseInt(fill.style.width) || 70;
-    let newWidth = currentWidth + addPercent;
+    let newWidth = energy + addPercent;
+    
     if(newWidth>=0){
         fill.style.width = newWidth + "%";
         fill.textContent = newWidth + "%";
+        energy = newWidth;
     }
     
 
@@ -109,8 +123,24 @@ function upDateEnergy(addPercent){
 
 function showTool(){
     const dropdown = document.getElementById("myDropdown");
-    const toolId = dropdown.value;
-    const image_url = tools[toolId-1]["img-url"];
-    document.getElementById("toolImage").src = image_url;
-    console.log("tool "+toolId + tools[toolId-1].title);
+    const toolId = dropdown.value - 1;
+    const tool = tools[toolId];
+
+    if (!tool) return; 
+
+    document.getElementById("toolImage").src = tool["img-url"];
+    //console.log("tool "+toolId + tools[toolId-1].title);
+
+    document.getElementById("title").textContent = tool.title;
+    document.getElementById("description").textContent = tool.description;
+
+    const reqList = document.getElementById("requirements");
+    reqList.innerHTML = "";
+    let requirements = tool.requirements;
+    for(let requirement of requirements){
+        let bulletpoint = document.createElement("li");
+        bulletpoint.textContent = requirement;
+        reqList.appendChild(bulletpoint);
+    }
+
 }
