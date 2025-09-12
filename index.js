@@ -57,6 +57,9 @@ function performAction(action){
     else if(action === "sail away"){
         sailAway();
     }
+    if(energy<10 && loot.meat<10){
+        alert("You perished, and you LOSE!!")
+    }
 }
 
 function rest(){
@@ -72,14 +75,14 @@ function gather(){
     
     //Payoff: 1-10 vines, 1-10 food, 1-10 wood and 1-5 stone
     loot.meat = loot.meat+ (Math.floor(Math.random() * (10 - 1 + 1)) + 1);
-    document.getElementById("meatStatus").textContent = meat;
-    console.log(meat);
+    document.getElementById("meatStatus").textContent = loot.meat;
+    console.log(loot.meat);
 
     loot.vine = loot.vine+ (Math.floor(Math.random() * 10) + 1);
     document.getElementById("vineStatus").textContent = loot.vine;
 
     loot.wood = loot.wood+ (Math.floor(Math.random() * 10) + 1);
-    document.getElementById("woodStatus").textContent = wood;
+    document.getElementById("woodStatus").textContent = loot.wood;
 
     loot.stone = loot.stone+ (Math.floor(Math.random() * 10) + 1);
     document.getElementById("stoneStatus").textContent = loot.stone;
