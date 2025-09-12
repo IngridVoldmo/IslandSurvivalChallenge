@@ -8,9 +8,13 @@ let loot={
 
 let tools = [];
 let energy = 70;
-let boatStatus = false;
-let axeStatus = false;
-let spearStatus = false;
+
+let craftedStatus = {
+    axe: false,
+    spear: false,
+    boat: false
+};
+
 
 getTools();
 
@@ -164,11 +168,10 @@ function craftItem(){
         const picGrid = document.getElementById("craftedTools");
         picGrid.appendChild(craftedPic);
 
-        axeStatus=true;
         console.log("Item crafted");
     }
     else{
-        alert("You dont have enough loot");
+        alert("You dont have the required resources");
     }
     
 }
@@ -190,8 +193,15 @@ function checkRequirements(tool){
         const cost = parseInt(splitReq[0]);
         updateLoot(resource, -cost);
     }
+    updateItemStatus(tool.title);
     
     return true;
+}
+
+function updateItemStatus(toolTitle){
+    let lowerCaseTitle = toolTitle.toLowerCase();
+    craftedStatus[lowerCaseTitle] = true;
+    console.log(craftedStatus);
 }
 
 function updateLoot(resource, cost){
