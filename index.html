@@ -15,24 +15,20 @@
                 <img class="styledimg" src="https://cdn.glitch.global/4ab89df4-051b-4f6c-b564-2317ed5cc084/Survivor.png?v=1729673697126"/>
                 <p class="emoji">💪</p>
                 <div class="bar">
-                    <div class="fill" id="fill">70%</div>
+                    <div class="fill" id="fill" style="width:70%">70%</div>
                 </div>
             </section>
             <section>
                 <ul class="loot-list">
                     <li><span class="emoji">🧱</span> <span id="woodStatus">20</span></li>
                     <li><span class="emoji">🥀</span> <span id="vineStatus">10</span></li>
-                    <li><span class="emoji">🍖</span> <span id="meatStatus">30</span></li>
+                    <li><span class="emoji">🍖</span> <span id="foodStatus">30</span></li>
                     <li><span class="emoji">🏔️</span> <span id="stoneStatus">20</span></li>
                 </ul>
             </section>
             <section>
                 <h3>Crafted tools</h3>
-                <section class="craftedTools">
-                <img class="grid-item" src="https://cdn.glitch.global/4ab89df4-051b-4f6c-b564-2317ed5cc084/Axe.png"></img>
-                <img class="grid-item"></img>
-                <img class="grid-item"></img>
-                <img class="grid-item"></img>
+                <section class="craftedTools" id="craftedTools">
             </section>
             </section>
             
@@ -41,26 +37,23 @@
         <section class="actions">
             <h1>Actions</h1>
             <ul class="action-list">
-                <li><button onclick="performAction('hunt')">Hunt</button><span class="emoji">🍖</span></li>
-                <li><button onclick="performAction('gather')">Gather</button><span class="emoji">🥀 🏔️ 🧱</span></p></li>
+                <li><button onclick="performAction('hunt')" id="hunt">Hunt</button><span class="emoji">🍖</span></li>
+                <li><button onclick="performAction('gather' )" id="gather">Gather</button><span class="emoji">🥀 🏔️ 🧱</span></p></li>
                 <li><button onclick="performAction('rest')">Rest</button><span class="emoji">💪</span></li>
-                <li><button onclick="performAction('sail away')">Sail away</button><span class="emoji">⛵</span></li>
+                <li><button disabled onclick="performAction('sail away')" id="sail away">Sail away</button><span class="emoji">⛵</span></li>
             </ul>
         </section>
     </section>
     <section class="grid-container2">
         <section class="toolsection">
             <section class="tooldescription">
-                <h2>Title</h2>
-                <p>Description</p>
+                <h2 id="title">Tool</h2>
+                <p id="description">Description</p>
                 <h3>Requirements</h3>
-                <ul>
-                    <li>ncjsdk</li>
-                    <li>something</li>
-                </ul>
+                <ul id="requirements"></ul>
             </section>
             <section class="toolImageSection">
-                <img id="toolImage" class="toolImage" src="https://cdn.glitch.global/4ab89df4-051b-4f6c-b564-2317ed5cc084/Axe.png"><img/>
+                <img id="toolImage" class="toolImage" alt="Image of tool"> <img/>
             </section>
             
         </section>
@@ -71,7 +64,7 @@
                 <option value="" disabled selected>Select an item to craft</option>
             </select></section>
             
-            <button onclick="performAction('sail away')">Craft</button>
+            <button id="craft">Craft</button>
         </section>
         
     </section>
