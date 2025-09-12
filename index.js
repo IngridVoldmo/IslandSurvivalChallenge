@@ -81,7 +81,11 @@ function gather(){
     loot.vine = loot.vine+ (Math.floor(Math.random() * 10) + 1);
     document.getElementById("vineStatus").textContent = loot.vine;
 
-    loot.wood = loot.wood+ (Math.floor(Math.random() * 10) + 1);
+    let gatheredWood = (Math.floor(Math.random() * 10) + 1)
+    if(craftedStatus.axe){
+        gatheredWood = gatheredWood * 2;
+    }
+    loot.wood = loot.wood+ gatheredWood;
     document.getElementById("woodStatus").textContent = loot.wood;
 
     loot.stone = loot.stone+ (Math.floor(Math.random() * 10) + 1);
@@ -91,7 +95,11 @@ function gather(){
 
 function hunt(){
     upDateEnergy(-20)
-    loot.meat = loot.meat+ (Math.floor((Math.random() * 20) + 1));
+    let huntedMeat = (Math.floor(Math.random() * 20) + 1)
+    if(craftedStatus.spear){
+        huntedMeat = huntedMeat * 2;
+    }
+    loot.meat = loot.meat+ huntedMeat;
     document.getElementById("meatStatus").textContent = loot.meat;
     
 }
