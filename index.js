@@ -1,6 +1,6 @@
 
 let loot={
-    meat : 30,
+    food : 30,
     vine : 10,
     wood : 20,
     stone : 20
@@ -57,26 +57,29 @@ function performAction(action){
     else if(action === "sail away"){
         sailAway();
     }
-    if(energy<10 && loot.meat<10){
+
+
+
+    if(energy<10 && loot.food<10){
         alert("You perished, and you LOSE!!")
     }
 }
 
 function rest(){
-    if(loot.meat>=10){
+    if(loot.food>=10){
         const energyEffect = Math.floor(Math.random() * (20 - 1 + 1)) + 1;
     upDateEnergy(energyEffect);
-    loot.meat = loot.meat - 10;
-    document.getElementById("meatStatus").textContent = loot.meat;
+    loot.food = loot.food - 10;
+    document.getElementById("foodStatus").textContent = loot.food;
     }
 }
 
 function gather(){
     
     //Payoff: 1-10 vines, 1-10 food, 1-10 wood and 1-5 stone
-    loot.meat = loot.meat+ (Math.floor(Math.random() * (10 - 1 + 1)) + 1);
-    document.getElementById("meatStatus").textContent = loot.meat;
-    console.log(loot.meat);
+    loot.food = loot.food+ (Math.floor(Math.random() * (10 - 1 + 1)) + 1);
+    document.getElementById("foodStatus").textContent = loot.food;
+    console.log(loot.food);
 
     loot.vine = loot.vine+ (Math.floor(Math.random() * 10) + 1);
     document.getElementById("vineStatus").textContent = loot.vine;
@@ -95,17 +98,20 @@ function gather(){
 
 function hunt(){
     upDateEnergy(-20)
-    let huntedMeat = (Math.floor(Math.random() * 20) + 1)
+    let huntedfood = (Math.floor(Math.random() * 20) + 1)
     if(craftedStatus.spear){
-        huntedMeat = huntedMeat * 2;
+        huntedfood = huntedfood * 2;
     }
-    loot.meat = loot.meat+ huntedMeat;
-    document.getElementById("meatStatus").textContent = loot.meat;
+    loot.food = loot.food+ huntedfood;
+    document.getElementById("foodStatus").textContent = loot.food;
     
 }
 
 function sailAway(){
-    alert("YOU WIN!!!");
+    if(craftedStatus.boat && energy>=40){
+        upDateEnergy(-40);
+        alert("YOU WIN!!!");
+    }
 }
 
 function upDateEnergy(addPercent){
@@ -205,6 +211,9 @@ function checkRequirements(tool){
         updateLoot(resource, -cost);
     }
     updateItemStatus(tool.title);
+    if(tool.title.toLowerCase() === "boat"){
+        document.getElementById("sail away").disabled =false;
+    }
     
     return true;
 }
