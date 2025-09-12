@@ -154,19 +154,6 @@ function getSelectedTool(){
 const craftBtn = document.getElementById("craft");
 craftBtn.addEventListener("click",craftItem);
 
-/*function craftItem(){
-    const tool = getSelectedTool();
-    if(tool.title==="Axe"){
-        craftAxe();
-    }
-    else if(tool.title==="Spear"){
-        spearStatus=true;
-    }
-    else if(tool.title=== "Boat"){
-        alert("YOU WIN!!!");
-    }
-}*/
-
 function craftItem(){
     const tool = getSelectedTool();
 
@@ -175,6 +162,8 @@ function craftItem(){
         craftedPic.className = "grid-item";
         craftedPic.src = tool["img-url"];
         const picGrid = document.getElementById("craftedTools");
+        picGrid.appendChild(craftedPic);
+
         axeStatus=true;
         console.log("Item crafted");
     }
