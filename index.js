@@ -1,9 +1,11 @@
 
+let loot={
+    meat : 30,
+    vine : 10,
+    wood : 20,
+    stone : 20
+}
 
-let meat = 30;
-let vines = 10;
-let wood = 20;
-let stone = 20;
 let tools = [];
 let energy = 70;
 let boatStatus = false;
@@ -54,36 +56,36 @@ function performAction(action){
 }
 
 function rest(){
-    if(meat>=10){
+    if(loot.meat>=10){
         const energyEffect = Math.floor(Math.random() * (20 - 1 + 1)) + 1;
     upDateEnergy(energyEffect);
-    meat = meat - 10;
-    document.getElementById("meatStatus").textContent = meat;
+    loot.meat = loot.meat - 10;
+    document.getElementById("meatStatus").textContent = loot.meat;
     }
 }
 
 function gather(){
     
     //Payoff: 1-10 vines, 1-10 food, 1-10 wood and 1-5 stone
-    meat = meat+ (Math.floor(Math.random() * (10 - 1 + 1)) + 1);
+    loot.meat = loot.meat+ (Math.floor(Math.random() * (10 - 1 + 1)) + 1);
     document.getElementById("meatStatus").textContent = meat;
     console.log(meat);
 
-    vines = vines+ (Math.floor(Math.random() * 10) + 1);
-    document.getElementById("vineStatus").textContent = vines;
+    loot.vine = loot.vine+ (Math.floor(Math.random() * 10) + 1);
+    document.getElementById("vineStatus").textContent = loot.vine;
 
-    wood = wood+ (Math.floor(Math.random() * 10) + 1);
+    loot.wood = loot.wood+ (Math.floor(Math.random() * 10) + 1);
     document.getElementById("woodStatus").textContent = wood;
 
-    stone = stone+ (Math.floor(Math.random() * 10) + 1);
-    document.getElementById("stoneStatus").textContent = stone;
+    loot.stone = loot.stone+ (Math.floor(Math.random() * 10) + 1);
+    document.getElementById("stoneStatus").textContent = loot.stone;
     upDateEnergy(-10);
 }
 
 function hunt(){
     upDateEnergy(-20)
-    meat = meat+ (Math.floor((Math.random() * 20) + 1));
-    document.getElementById("meatStatus").textContent = meat;
+    loot.meat = loot.meat+ (Math.floor((Math.random() * 20) + 1));
+    document.getElementById("meatStatus").textContent = loot.meat;
     
 }
 
@@ -122,10 +124,7 @@ function upDateEnergy(addPercent){
 
 
 function showTool(){
-    const dropdown = document.getElementById("myDropdown");
-    const toolId = dropdown.value - 1;
-    const tool = tools[toolId];
-
+    const tool = getSelectedTool();
     if (!tool) return; 
 
     document.getElementById("toolImage").src = tool["img-url"];
@@ -143,4 +142,71 @@ function showTool(){
         reqList.appendChild(bulletpoint);
     }
 
+}
+
+function getSelectedTool(){
+    const dropdown = document.getElementById("myDropdown");
+    const toolId = dropdown.value - 1;
+    const tool = tools[toolId];
+    return tool;
+}
+
+const craftBtn = document.getElementById("craft");
+craftBtn.addEventListener("click",craftItem);
+
+/*function craftItem(){
+    const tool = getSelectedTool();
+    if(tool.title==="Axe"){
+        craftAxe();
+    }
+    else if(tool.title==="Spear"){
+        spearStatus=true;
+    }
+    else if(tool.title=== "Boat"){
+        alert("YOU WIN!!!");
+    }
+}*/
+
+function craftItem(){
+    const tool = getSelectedTool();
+
+    if (checkRequirements(tool)){
+        const craftedPic = document.createElement("img");
+        craftedPic.className = "grid-item";
+        craftedPic.src = tool["img-url"];
+        const picGrid = document.getElementById("craftedTools");
+        axeStatus=true;
+        console.log("Item crafted");
+    }
+    else{
+        alert("You dont have enough loot");
+    }
+    
+}
+
+function checkRequirements(tool){
+    
+    for(let req of tool.requirements){
+        const splitReq = req.split(" ");
+        const resource = splitReq[1]; 
+        const cost = parseInt(splitReq[0]);
+        if(loot[resource] < cost|| !loot.hasOwnProperty(resource)){
+            return false;
+        }
+        
+    }
+    for(let req of tool.requirements){
+        const splitReq = req.split(" ");
+        const resource = splitReq[1]; 
+        const cost = parseInt(splitReq[0]);
+        updateLoot(resource, -cost);
+    }
+    
+    return true;
+}
+
+function updateLoot(resource, cost){
+    loot[resource] = loot[resource] + cost;
+    let elementId = resource + "Status";
+    document.getElementById(elementId).textContent = loot[resource];
 }
